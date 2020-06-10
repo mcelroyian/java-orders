@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CustomerService {
 
-    List<Orders> findAllOrders();
+    List<Customers> findAllOrders();
 
     Customers findCustomerById(long id);
 
