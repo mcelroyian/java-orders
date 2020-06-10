@@ -1,6 +1,11 @@
 package local.imcelroy.orders.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.aspectj.weaver.loadtime.Agent;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "customers")
@@ -21,16 +26,24 @@ public class Customers
     private double paymentamt;
     private double outstandingamt;
     private String phone;
+    private long agentcode;
 
 //    NEEDS STUFF HERE
     @ManyToOne
-    @JoinColumn(name = "agentcode")
-    private long agentcode;
+    @JoinColumn(name = "agentcode", nullable = false)
+    @JsonIgnoreProperties("customers")
+    private Agents agent;
+
+    @OneToMany(mappedBy = "customer",
+    cascade = CascadeType.ALL,
+    orphanRemoval = true)
+    @JsonIgnoreProperties("customer")
+    private List<Orders> orders = new ArrayList<>();
 
     public Customers() {
     }
 
-    public Customers(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamt, double recieveamt, double paymentamt, double outstandingamt, String phone) {
+    public Customers(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamt, double recieveamt, double paymentamt, double outstandingamt, String phone, long agentcode, Agents agent, List<Orders> orders) {
         this.custname = custname;
         this.custcity = custcity;
         this.workingarea = workingarea;
@@ -41,6 +54,9 @@ public class Customers
         this.paymentamt = paymentamt;
         this.outstandingamt = outstandingamt;
         this.phone = phone;
+        this.agentcode = agentcode;
+        this.agent = agent;
+        this.orders = orders;
     }
 
     public long getCustcode() {
@@ -131,6 +147,30 @@ public class Customers
         this.phone = phone;
     }
 
+    public long getAgentcode() {
+        return agentcode;
+    }
+
+    public void setAgentcode(long agentcode) {
+        this.agentcode = agentcode;
+    }
+
+    public Agents getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agents agent) {
+        this.agent = agent;
+    }
+
+    public List<Orders> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Orders> orders) {
+        this.orders = orders;
+    }
+
     @Override
     public String toString() {
         return "Customers{" +
@@ -146,6 +186,8 @@ public class Customers
                 ", outstandingamt=" + outstandingamt +
                 ", phone='" + phone + '\'' +
                 ", agentcode=" + agentcode +
+                ", agent=" + agent +
+                ", orders=" + orders +
                 '}';
     }
 }
