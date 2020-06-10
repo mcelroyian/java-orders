@@ -26,7 +26,6 @@ public class Customers
     private double paymentamt;
     private double outstandingamt;
     private String phone;
-    private long agentcode;
 
 //    NEEDS STUFF HERE
     @ManyToOne
@@ -54,7 +53,6 @@ public class Customers
         this.paymentamt = paymentamt;
         this.outstandingamt = outstandingamt;
         this.phone = phone;
-        this.agentcode = agentcode;
         this.agent = agent;
         this.orders = orders;
     }
@@ -147,14 +145,6 @@ public class Customers
         this.phone = phone;
     }
 
-    public long getAgentcode() {
-        return agentcode;
-    }
-
-    public void setAgentcode(long agentcode) {
-        this.agentcode = agentcode;
-    }
-
     public Agents getAgent() {
         return agent;
     }
@@ -185,7 +175,6 @@ public class Customers
                 ", paymentamt=" + paymentamt +
                 ", outstandingamt=" + outstandingamt +
                 ", phone='" + phone + '\'' +
-                ", agentcode=" + agentcode +
                 ", agent=" + agent +
                 ", orders=" + orders +
                 '}';

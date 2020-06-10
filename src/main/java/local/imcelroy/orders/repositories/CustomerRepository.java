@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface CustomerRepository extends CrudRepository<Customers, Long> {
 
-    List<Customers> findByNameContainingIgnoreCase(String likename);
+    List<Customers> findByCustnameContainingIgnoreCase(String likename);
 }

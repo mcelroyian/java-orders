@@ -32,6 +32,6 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<Customers> findByNameLike(String substring) {
 
-        return custrepo.findByNameContainingIgnoreCase(substring);
+        return custrepo.findByCustnameContainingIgnoreCase(substring);
     }
 }
