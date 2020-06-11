@@ -26,8 +26,9 @@ public class Orders
 
     @ManyToMany()
     @JoinTable(name = "orderspayments",
-    joinColumns = @JoinColumn(name = "ordernum"),
+    joinColumns = @JoinColumn(name = "ordnum"),
     inverseJoinColumns = @JoinColumn(name = "paymentid"))
+    @JsonIgnoreProperties("orders")
     private List<Payments> payments = new ArrayList<>();
 
     public Orders() {

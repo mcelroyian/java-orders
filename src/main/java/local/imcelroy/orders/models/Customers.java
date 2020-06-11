@@ -1,7 +1,6 @@
 package local.imcelroy.orders.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.aspectj.weaver.loadtime.Agent;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,12 +21,11 @@ public class Customers
     private String custcountry;
     private String grade;
     private double openingamt;
-    private double recieveamt;
+    private double receiveamt;
     private double paymentamt;
     private double outstandingamt;
     private String phone;
 
-//    NEEDS STUFF HERE
     @ManyToOne
     @JoinColumn(name = "agentcode", nullable = false)
     @JsonIgnoreProperties("customers")
@@ -42,14 +40,14 @@ public class Customers
     public Customers() {
     }
 
-    public Customers(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamt, double recieveamt, double paymentamt, double outstandingamt, String phone, long agentcode, Agents agent, List<Orders> orders) {
+    public Customers(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamt, double receiveamt, double paymentamt, double outstandingamt, String phone, Agents agent, List<Orders> orders) {
         this.custname = custname;
         this.custcity = custcity;
         this.workingarea = workingarea;
         this.custcountry = custcountry;
         this.grade = grade;
         this.openingamt = openingamt;
-        this.recieveamt = recieveamt;
+        this.receiveamt = receiveamt;
         this.paymentamt = paymentamt;
         this.outstandingamt = outstandingamt;
         this.phone = phone;
@@ -113,12 +111,12 @@ public class Customers
         this.openingamt = openingamt;
     }
 
-    public double getRecieveamt() {
-        return recieveamt;
+    public double getReceiveamt() {
+        return receiveamt;
     }
 
-    public void setRecieveamt(double recieveamt) {
-        this.recieveamt = recieveamt;
+    public void setReceiveamt(double recieveamt) {
+        this.receiveamt = recieveamt;
     }
 
     public double getPaymentamt() {
@@ -171,7 +169,7 @@ public class Customers
                 ", custcountry='" + custcountry + '\'' +
                 ", grade='" + grade + '\'' +
                 ", openingamt=" + openingamt +
-                ", recieveamt=" + recieveamt +
+                ", receiveamt=" + receiveamt +
                 ", paymentamt=" + paymentamt +
                 ", outstandingamt=" + outstandingamt +
                 ", phone='" + phone + '\'' +

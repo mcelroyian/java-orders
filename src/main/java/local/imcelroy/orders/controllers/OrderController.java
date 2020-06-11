@@ -1,6 +1,5 @@
 package local.imcelroy.orders.controllers;
 
-import local.imcelroy.orders.models.Customers;
 import local.imcelroy.orders.models.Orders;
 import local.imcelroy.orders.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +23,5 @@ public class OrderController {
         Orders o = orderService.findOrdersById(id);
         return new ResponseEntity<>(o, HttpStatus.OK);
     }
-//    @GetMapping(value = "customer/{id}", produces = {"application/json"})
-//    public ResponseEntity<?> findCustomerById(@PathVariable long id)
-//    {
-//        Customers c = customerService.findCustomerById(id);
-//        return new ResponseEntity<>(c, HttpStatus.OK);
-//    }
+
 }
